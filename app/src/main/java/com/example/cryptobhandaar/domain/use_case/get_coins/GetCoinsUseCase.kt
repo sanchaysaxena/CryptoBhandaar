@@ -1,6 +1,8 @@
 package com.example.cryptobhandaar.domain.use_case.get_coins
 
 import android.net.http.HttpException
+import android.os.Build
+import androidx.annotation.RequiresExtension
 import com.example.cryptobhandaar.common.Resource
 import com.example.cryptobhandaar.data.remote.dto.toCoin
 import com.example.cryptobhandaar.domain.model.Coin
@@ -15,6 +17,7 @@ class GetCoinsUseCase @Inject constructor(
 ) {
     //here invoke allows instances of a class to be called as functions
     //which we have called in view models
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     operator fun invoke(): Flow<Resource<List<Coin>>> = flow {
         try {
             emit(Resource.Loading())

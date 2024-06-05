@@ -1,6 +1,8 @@
 package com.example.cryptobhandaar.domain.use_case.get_coin
 
 import android.net.http.HttpException
+import android.os.Build
+import androidx.annotation.RequiresExtension
 import com.example.cryptobhandaar.common.Resource
 import com.example.cryptobhandaar.data.remote.dto.toCoin
 import com.example.cryptobhandaar.data.remote.dto.toCoinDetail
@@ -15,6 +17,7 @@ import javax.inject.Inject
 class GetCoinUseCase @Inject constructor(
     private val repository:CoinRepository
 ) {
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     operator fun invoke(coinId:String): Flow<Resource<CoinDetail>> = flow {
         try {
             emit(Resource.Loading())
