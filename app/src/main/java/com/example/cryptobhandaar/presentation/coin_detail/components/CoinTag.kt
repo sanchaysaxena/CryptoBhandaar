@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
@@ -20,14 +21,14 @@ fun CoinTag(
         modifier = Modifier
             .border(
                 width = 1.dp,
-                color = MaterialTheme.colors.primary,
+                color = Color.Green,
                 shape = RoundedCornerShape(100.dp)
             )
             .padding(10.dp)
     ){
         Text(
             text = tag,
-            color = MaterialTheme.colors.primary,
+            color = Color.Green,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.body2
         )

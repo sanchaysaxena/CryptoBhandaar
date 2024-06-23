@@ -8,6 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import com.example.cryptobhandaar.data.remote.dto.TeamMember
@@ -23,13 +24,15 @@ fun TeamListItem(
     ) {
         Text(
             text = teamMember. name,
-            style = androidx.compose.material.MaterialTheme.typography.h4
+            style = androidx.compose.material.MaterialTheme.typography.h4,
+            color = Color.White
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = teamMember.position,
             style = androidx.compose.material.MaterialTheme.typography.body2,
-            fontStyle = FontStyle.Italic
+            fontStyle = FontStyle.Italic,
+            color = Color.White
         )
     }
 }

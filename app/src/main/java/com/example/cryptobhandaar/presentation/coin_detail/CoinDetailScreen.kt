@@ -2,6 +2,7 @@ package com.example.cryptobhandaar.presentation.coin_detail
 
 import android.os.Build
 import androidx.annotation.RequiresExtension
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.FlowRow
@@ -24,6 +25,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -39,7 +41,9 @@ fun CoinDetailScreen(
     viewModel: CoinDetailViewModel= hiltViewModel()
 ){
      val state=viewModel.state.value
-    Box(modifier = Modifier.fillMaxSize()){
+    Box(modifier = Modifier.fillMaxSize()
+        .background(Color.Black)
+        .padding(0.dp,16.dp,0.dp,16.dp)){
         state.coin?.let { coin->
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
@@ -51,9 +55,11 @@ fun CoinDetailScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ){
                         Text(
-                            text = "${coin.rank}. #{coin.name} (${coin.symbol})",
-                            style = MaterialTheme.typography.h2,
-                            modifier = Modifier.weight (8f)
+                            text = "${coin.rank}. ${coin.name} (${coin.symbol})",
+                            style = MaterialTheme.typography.h3,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.weight(8f),
+                            color = Color.White
                         )
                         Text(
                             text = if(coin.isActive) "active" else "inactive",
@@ -68,17 +74,19 @@ fun CoinDetailScreen(
                     Spacer(modifier = Modifier.height(15.dp))
                     Text(
                         text = coin. description,
-                        style = MaterialTheme.typography.body2
+                        style = MaterialTheme.typography.body2,
+                        color = Color.White
                     )
                     Spacer (modifier = Modifier.height (15.dp))
                     Text (
                         text = "Tags",
-                        style = MaterialTheme.typography.h3
+                        style = MaterialTheme.typography.h3,
+                        color = Color.White
                     )
                     Spacer (modifier = Modifier.height (15.dp))
                     com.google.accompanist.flowlayout.FlowRow(
-                        mainAxisSpacing = 10. dp,
-                        crossAxisSpacing = 10. dp,
+                        mainAxisSpacing = 10.dp,
+                        crossAxisSpacing = 10.dp,
                         modifier = Modifier.fillMaxWidth ()
                     ) {
                         coin.tags.forEach { tag ->
@@ -88,7 +96,8 @@ fun CoinDetailScreen(
                     Spacer(modifier = Modifier.height(15.dp))
                     Text (
                         text = "Team Members",
-                        style = MaterialTheme.typography.h3
+                        style = MaterialTheme.typography.h3,
+                        color = Color.White
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                 }

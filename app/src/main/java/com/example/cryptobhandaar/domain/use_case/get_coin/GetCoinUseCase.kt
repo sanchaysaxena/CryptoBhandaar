@@ -22,7 +22,7 @@ class GetCoinUseCase @Inject constructor(
         try {
             emit(Resource.Loading())
             val coin=repository.getCoinById(coinId).toCoinDetail()
-            emit(Resource.Success<CoinDetail>(coin))
+            emit(Resource.Success(coin))
         }
         catch (e:HttpException){
             emit(Resource.Error(e.localizedMessage?:"An Unexpected Error occurred"))
